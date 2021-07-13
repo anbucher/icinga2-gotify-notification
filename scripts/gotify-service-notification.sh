@@ -13,15 +13,23 @@ SERVICEOUTPUT=$ICINGA_SERVICEOUTPUT
 case $SERVICESTATE in
      WARNING)
           ICON="\ud83d\udd14"
+          TITLE="PROBLEM"
+          PRIORITY=5
           ;;
      CRITICAL)
           ICON="\u274c"
+          TITLE="PROBLEM"
+          PRIORITY=8
           ;;
      OK)
           ICON="\u2705"
+          TITLE="RECOVERY"
+          PRIORITY=3
           ;;
      *)
           ICON="\ud83d\udd14"
+          TITLE="Notification"
+          PRIORITY=5
           ;;
 esac
 
@@ -34,5 +42,5 @@ curl --silent \
      --show-error \
      -X POST \
      -H "Content-type: application/json" \
-     --data '{"title": "Notification", "message":"'"$MESSAGE"'", "priority":5}' \
+     --data '{"title": "'"$TITLE"'", "message":"'"$MESSAGE"'", "priority":'"$PRIORITY"'}' \
      $GOTIFY_WEBHOOK
