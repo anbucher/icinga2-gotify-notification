@@ -16,7 +16,7 @@ Send notifications from Icinga2 to Gotify
 ### 1. Preparation
 set Webhook URL for testing
 
-    run in bash:
+run in bash:
     `    
     export ICINGA_CONTACTPAGER=<GOTIFY_WEBHOOK_URL>
     `
